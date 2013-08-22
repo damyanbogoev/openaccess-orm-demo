@@ -1,4 +1,4 @@
-openaccess-orm-demo
+OpenAccess ORM Demo Repository
 ===================
 
-OpenAccess ORM Demo Repository
+Integration samples with OpenAccess ORM
