@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<project name="MyNantTestApplication" default="run" basedir=".">
+  <property name="debug" value="false"/>
+  <property name="nant.settings.currentframework" value="net-3.5" />
+  <property name="build.dir" value="Bin" />
+  <property name="build.file" value="${build.dir}/MyNantTestApplication.exe" />
+  <property name="lib.dir" value="Lib" />
+  <property name="source.dir" value="Source" />
+  <property name="enhancer.file" value="${lib.dir}/enhancer.exe" />
+  <target name="clean">
+    <delete>
+      <fileset>
+        <include name="${build.dir}/*.*" />
+      </fileset>
+    </delete>
+  </target>
+  <target name="build" depends="clean">
+    <mkdir dir="${build.dir}"/>
+    <csc target="exe" output="${build.file}" debug="${debug}">
+      <sources>
+        <include name="${source.dir}/*.cs"/>
+      </sources>
+      <resources>
+        <include name="${source.dir}/MyModel.rlinq" />
+      </resources>
+      <references>
+        <include name="System" />
+        <include name="System.Core" />
+        <include name="System.Data" />
+        <include name="Lib/Telerik.OpenAccess.dll" />
+        <include name="Lib/Telerik.OpenAccess.35.Extensions.dll" />
+      </references>
+    </csc>
+    <copy todir="${build.dir}">
+      <fileset basedir="${lib.dir}">
+        <include name="Telerik.OpenAccess.dll" />
+        <include name="Telerik.OpenAccess.35.Extensions.dll" />
+      </fileset>
+    </copy>
+    <copy file="${source.dir}/App.config" tofile="${build.file}.config" />
+  </target>
+  <target name="enhance" depends="build">
+    <exec program="${enhancer.file}">
+      <arg value="-assembly:&quot;${build.file}&quot; -xmlMapping:${source.dir}/MyModel.rlinq"/>
+    </exec>
+  </target>
+  <target name="run" depends="enhance">
+    <exec program="${build.file}"/>
+  </target>
+</project>

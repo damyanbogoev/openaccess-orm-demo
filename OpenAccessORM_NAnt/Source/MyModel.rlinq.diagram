@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<entityDiagramsDiagram dslVersion="2.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="MyModel">
+  <DomainModelMoniker name="/EntitiesModel" />
+  <nestedChildShapes>
+    <classShape Id="6a50a86c-234d-4115-b488-9c8c2387bd61" absoluteBounds="0.75, 0.75, 1.5, 3.878087565104166" fillColor="253, 184, 119" outlineColor="213, 71, 0">
+      <DomainClassMoniker name="/EntitiesModel/Person" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ffbd92c5-c4ec-40b0-a0b6-12bba0d4787d" absoluteBounds="0.765, 1.2599999999999998, 1.4700000000000002, 2.749308268229167" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6eb4da64-1209-4fe3-a6a3-966d0e07c06b" absoluteBounds="0.765, 4.0193082682291665, 1.4700000000000002, 0.2493896484375" name="ImplementationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="45242ba2-a3bc-4a62-aafa-5be072613315" absoluteBounds="0.765, 4.2786979166666663, 1.4700000000000002, 0.2493896484375" name="NavigationCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</entityDiagramsDiagram>

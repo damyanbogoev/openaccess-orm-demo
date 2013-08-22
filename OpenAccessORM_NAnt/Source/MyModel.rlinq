@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DomainModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" name="EntitiesModel" namespace="MyNantTestApplication" showPropertiesCompartment="true" xmlns="http://www.telerik.com/ORM">
+  <orm:orm name="EntitiesModel" backend="mssql" xmlns:orm="http://tempuri.org/ORM">
+    <orm:namespace name="MyNantTestApplication" default="true">
+      <orm:class name="Person" uniqueId="40e8aed5-bf3c-4afc-b9d6-34be84fcdc2c">
+        <orm:table name="Person" schema="Person" />
+        <orm:identity>
+          <orm:single-field field-name="_businessEntityID" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_businessEntityID" property="BusinessEntityID" behavior="readwrite" uniqueId="7092070d-b3c2-413f-a057-0bd3e2792895" type="System.Int32">
+          <orm:column name="BusinessEntityID" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_personType" property="PersonType" behavior="readwrite" uniqueId="88ea3876-e916-42d0-bd73-2fdf82bb5948" type="System.String">
+          <orm:column name="PersonType" sql-type="nchar" nullable="false" length="2" scale="0" ado-type="UnicodeStringFixedLength" />
+        </orm:field>
+        <orm:field name="_nameStyle" property="NameStyle" behavior="readwrite" uniqueId="63055b2b-2b80-4f67-adab-bbb349087c5f" type="System.Boolean">
+          <orm:column name="NameStyle" sql-type="'NameStyle'" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Bit" is-udt="true" />
+        </orm:field>
+        <orm:field name="_title" property="Title" behavior="readwrite" uniqueId="32fa7135-cc81-46d7-ae15-be7471aca3ec" type="System.String">
+          <orm:column name="Title" sql-type="nvarchar" nullable="true" length="8" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_firstName" property="FirstName" behavior="readwrite" uniqueId="672e46ab-3b15-4930-94b2-cf0213963763" type="System.String">
+          <orm:column name="FirstName" sql-type="'Name'" nullable="false" length="50" scale="0" ado-type="UnicodeStringVariableLength" is-udt="true" />
+        </orm:field>
+        <orm:field name="_middleName" property="MiddleName" behavior="readwrite" uniqueId="4c7ab36a-d0d4-4bc8-850f-2bb4ddf966ce" type="System.String">
+          <orm:column name="MiddleName" sql-type="'Name'" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" is-udt="true" />
+        </orm:field>
+        <orm:field name="_lastName" property="LastName" behavior="readwrite" uniqueId="e579b1c1-17f7-41f0-a98f-fbd2b9de14c1" type="System.String">
+          <orm:column name="LastName" sql-type="'Name'" nullable="false" length="50" scale="0" ado-type="UnicodeStringVariableLength" is-udt="true" />
+        </orm:field>
+        <orm:field name="_suffix" property="Suffix" behavior="readwrite" uniqueId="e7800818-6e37-44d4-989f-e05e7f6ecad8" type="System.String">
+          <orm:column name="Suffix" sql-type="nvarchar" nullable="true" length="10" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_emailPromotion" property="EmailPromotion" behavior="readwrite" uniqueId="ac37bcb4-9b77-4bc6-884e-bdb973f636ea" type="System.Int32">
+          <orm:column name="EmailPromotion" sql-type="int" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_additionalContactInfo" property="AdditionalContactInfo" behavior="readwrite" uniqueId="6de1fba0-43ee-4854-a5e6-d5163c284997" type="System.String">
+          <orm:column name="AdditionalContactInfo" sql-type="xml" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_demographics" property="Demographics" behavior="readwrite" uniqueId="177a3890-47cf-47d7-9fdb-d20963244458" type="System.String">
+          <orm:column name="Demographics" sql-type="xml" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_rowguid" property="Rowguid" behavior="readwrite" uniqueId="e541de19-5287-481c-9dbd-f39306c3e028" type="System.Guid">
+          <orm:column name="rowguid" sql-type="uniqueidentifier" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Guid" />
+        </orm:field>
+        <orm:field name="_modifiedDate" property="ModifiedDate" behavior="readwrite" uniqueId="d3aca8ff-d376-49b5-820c-15683c849323" type="System.DateTime">
+          <orm:column name="ModifiedDate" sql-type="datetime" nullable="false" length="0" scale="0" has-default-value="true" ado-type="DateTime" />
+        </orm:field>
+        <orm:index name="AK_Person_rowguid" unique="true">
+          <orm:columnMapping>
+            <orm:column name="rowguid" sql-type="uniqueidentifier" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Guid" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="IX_Person_LastName_FirstName_MiddleName">
+          <orm:columnMapping>
+            <orm:column name="LastName" sql-type="'Name'" nullable="false" length="50" scale="0" ado-type="UnicodeStringVariableLength" is-udt="true" />
+          </orm:columnMapping>
+          <orm:columnMapping>
+            <orm:column name="FirstName" sql-type="'Name'" nullable="false" length="50" scale="0" ado-type="UnicodeStringVariableLength" is-udt="true" />
+          </orm:columnMapping>
+          <orm:columnMapping>
+            <orm:column name="MiddleName" sql-type="'Name'" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" is-udt="true" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:class>
+    </orm:namespace>
+    <orm:schema schema="Person">
+      <orm:table name="Person" schema="Person">
+        <orm:column name="BusinessEntityID" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        <orm:column name="PersonType" sql-type="nchar" nullable="false" length="2" scale="0" ado-type="UnicodeStringFixedLength" />
+        <orm:column name="NameStyle" sql-type="'NameStyle'" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Bit" is-udt="true" />
+        <orm:column name="Title" sql-type="nvarchar" nullable="true" length="8" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="FirstName" sql-type="'Name'" nullable="false" length="50" scale="0" ado-type="UnicodeStringVariableLength" is-udt="true" />
+        <orm:column name="MiddleName" sql-type="'Name'" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" is-udt="true" />
+        <orm:column name="LastName" sql-type="'Name'" nullable="false" length="50" scale="0" ado-type="UnicodeStringVariableLength" is-udt="true" />
+        <orm:column name="Suffix" sql-type="nvarchar" nullable="true" length="10" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="EmailPromotion" sql-type="int" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int32" />
+        <orm:column name="AdditionalContactInfo" sql-type="xml" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="Demographics" sql-type="xml" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="rowguid" sql-type="uniqueidentifier" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Guid" />
+        <orm:column name="ModifiedDate" sql-type="datetime" nullable="false" length="0" scale="0" has-default-value="true" ado-type="DateTime" />
+        <orm:index name="AK_Person_rowguid" unique="true">
+          <orm:columnMapping>
+            <orm:column name="rowguid" sql-type="uniqueidentifier" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Guid" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:index name="IX_Person_LastName_FirstName_MiddleName">
+          <orm:columnMapping>
+            <orm:column name="LastName" sql-type="'Name'" nullable="false" length="50" scale="0" ado-type="UnicodeStringVariableLength" is-udt="true" />
+          </orm:columnMapping>
+          <orm:columnMapping>
+            <orm:column name="FirstName" sql-type="'Name'" nullable="false" length="50" scale="0" ado-type="UnicodeStringVariableLength" is-udt="true" />
+          </orm:columnMapping>
+          <orm:columnMapping>
+            <orm:column name="MiddleName" sql-type="'Name'" nullable="true" length="50" scale="0" ado-type="UnicodeStringVariableLength" is-udt="true" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:table>
+    </orm:schema>
+    <orm:schema schema="">
+      <orm:udt name="AccountNumber" sql-type="nvarchar" length="15" scale="0" />
+      <orm:udt name="Flag" sql-type="bit" scale="0" />
+      <orm:udt name="Name" sql-type="nvarchar" length="50" scale="0" />
+      <orm:udt name="NameStyle" sql-type="bit" scale="0" />
+      <orm:udt name="OrderNumber" sql-type="nvarchar" length="25" scale="0" />
+      <orm:udt name="Phone" sql-type="nvarchar" length="25" scale="0" />
+    </orm:schema>
+    <orm:relational-naming-settings>
+      <orm:remove-camel-case>False</orm:remove-camel-case>
+      <orm:source-strategy>Property</orm:source-strategy>
+    </orm:relational-naming-settings>
+  </orm:orm>
+  <ModelSettings xmlns="">
+    <AppConfigConnectionPropertyName>MyConnection</AppConfigConnectionPropertyName>
+    <AppConfigConnectionString>Data Source=.\sqlexpress;Initial Catalog=AdventureWorks2012;Integrated Security=True</AppConfigConnectionString>
+    <InitialCatalog>AdventureWorks2012</InitialCatalog>
+    <NamingSettings>
+      <ClassRules>
+        <CaseMode>PascalCase</CaseMode>
+        <PluralizationMode>Singularize</PluralizationMode>
+      </ClassRules>
+      <FieldRules>
+        <AddPrefix>_</AddPrefix>
+        <CaseMode>CamelCase</CaseMode>
+      </FieldRules>
+      <PropertyRules>
+        <CaseMode>PascalCase</CaseMode>
+      </PropertyRules>
+    </NamingSettings>
+    <CodeGenerationSettings>
+      <MappingDefinitionType>Xml</MappingDefinitionType>
+    </CodeGenerationSettings>
+    <SchemaUpdateSettings />
+    <BackendConfigurationSettings>
+      <BackendConfiguration>
+        <Backend>mssql</Backend>
+        <ProviderName>System.Data.SqlClient</ProviderName>
+      </BackendConfiguration>
+    </BackendConfigurationSettings>
+  </ModelSettings>
+  <Types>
+    <DomainClass Id="40e8aed5-bf3c-4afc-b9d6-34be84fcdc2c" name="Person" namespace="MyNantTestApplication" showPropertiesCompartment="true" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="7092070d-b3c2-413f-a057-0bd3e2792895" name="BusinessEntityID" type="Int32" label="BusinessEntityID : Int32" kind="Persistent" identity="true" fieldName="_businessEntityID" />
+      <Property Id="6de1fba0-43ee-4854-a5e6-d5163c284997" name="AdditionalContactInfo" label="AdditionalContactInfo : String" kind="Persistent" fieldName="_additionalContactInfo" />
+      <Property Id="177a3890-47cf-47d7-9fdb-d20963244458" name="Demographics" label="Demographics : String" kind="Persistent" fieldName="_demographics" />
+      <Property Id="ac37bcb4-9b77-4bc6-884e-bdb973f636ea" name="EmailPromotion" type="Int32" label="EmailPromotion : Int32" kind="Persistent" fieldName="_emailPromotion" />
+      <Property Id="672e46ab-3b15-4930-94b2-cf0213963763" name="FirstName" label="FirstName : String" kind="Persistent" fieldName="_firstName" />
+      <Property Id="e579b1c1-17f7-41f0-a98f-fbd2b9de14c1" name="LastName" label="LastName : String" kind="Persistent" fieldName="_lastName" />
+      <Property Id="4c7ab36a-d0d4-4bc8-850f-2bb4ddf966ce" name="MiddleName" label="MiddleName : String" kind="Persistent" fieldName="_middleName" />
+      <Property Id="d3aca8ff-d376-49b5-820c-15683c849323" name="ModifiedDate" type="DateTime" label="ModifiedDate : DateTime" kind="Persistent" fieldName="_modifiedDate" />
+      <Property Id="63055b2b-2b80-4f67-adab-bbb349087c5f" name="NameStyle" type="Boolean" label="NameStyle : Boolean" kind="Persistent" fieldName="_nameStyle" />
+      <Property Id="88ea3876-e916-42d0-bd73-2fdf82bb5948" name="PersonType" label="PersonType : String" kind="Persistent" fieldName="_personType" />
+      <Property Id="e541de19-5287-481c-9dbd-f39306c3e028" name="Rowguid" type="Guid" label="Rowguid : Guid" kind="Persistent" fieldName="_rowguid" />
+      <Property Id="e7800818-6e37-44d4-989f-e05e7f6ecad8" name="Suffix" label="Suffix : String" kind="Persistent" fieldName="_suffix" />
+      <Property Id="32fa7135-cc81-46d7-ae15-be7471aca3ec" name="Title" label="Title : String" kind="Persistent" fieldName="_title" />
+    </DomainClass>
+  </Types>
+  <domainContext>
+    <domainModelHasDomainContext Id="e8850b08-38fd-4cb0-993d-e6c70db75729">
+      <domainContainer name="EntitiesModel" namespace="MyNantTestApplication" showPropertiesCompartment="true">
+        <entitySetProperty name="People" namespace="MyNantTestApplication" type="Person" label="People : IQueryable&lt;MyNantTestApplication.Person&gt;" />
+      </domainContainer>
+    </domainModelHasDomainContext>
+  </domainContext>
+</DomainModel>
