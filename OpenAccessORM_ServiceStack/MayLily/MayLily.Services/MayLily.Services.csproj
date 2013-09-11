@@ -97,6 +97,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\OpenAccess.CodeFirst.2013.2.702.1\lib\Telerik.OpenAccess.35.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.OpenAccess.Runtime, Version=2013.2.702.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\OpenAccess.CodeFirst.2013.2.702.1\lib\Telerik.OpenAccess.Runtime.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
