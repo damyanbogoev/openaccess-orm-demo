@@ -4,7 +4,6 @@ using Funq;
 using MayLily.Data.OpenAccess;
 using MayLily.DomainModel;
 using MayLily.Infrastructure.Configuration;
-using MayLily.Infrastructure.Data;
 using ServiceStack.WebHost.Endpoints;
 
 namespace MayLily.Services
@@ -18,7 +17,11 @@ namespace MayLily.Services
 
         public override void Configure(Container container)
         {
-            container.Adapter = new DependencyManager();
+            container.RegisterAutoWiredAs<Configuration, IConfiguration>().ReusedWithin(ReuseScope.Container);
+            container.RegisterAutoWiredAs<MayLilyMetadataSource, IMetadataSource>().ReusedWithin(ReuseScope.Container);
+            container.RegisterAutoWiredAs<MayLilyMetadataSource, IMetadataSource>().ReusedWithin(ReuseScope.Container);
+            container.RegisterAutoWiredAs<MayLilyContext, IDbMigrator>().ReusedWithin(ReuseScope.None);
+            container.RegisterAutoWiredAs<MayLilyContext, IMayLilyContext>().ReusedWithin(ReuseScope.None);
         }
     }
 
@@ -26,11 +29,12 @@ namespace MayLily.Services
     {
         public static void Start()
         {
-            IDbMigrator migrator = DependencyManager.Resolve<IDbMigrator>(verify: true);
+            MayLilyAppHost appHost = new MayLilyAppHost();
+            appHost.Init();
+
+            IDbMigrator migrator = appHost.Container.Resolve<IDbMigrator>();
             migrator.MigrateSchema();
             migrator.SeedData();
-
-            new MayLilyAppHost().Init();
         }
     }
 
@@ -39,36 +43,6 @@ namespace MayLily.Services
         protected void Application_Start(object sender, EventArgs e)
         {
             AppBootstrapper.Start();
-        }
-
-        protected void Session_Start(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Application_BeginRequest(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Application_AuthenticateRequest(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Application_Error(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Session_End(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Application_End(object sender, EventArgs e)
-        {
-
         }
     }
 }
