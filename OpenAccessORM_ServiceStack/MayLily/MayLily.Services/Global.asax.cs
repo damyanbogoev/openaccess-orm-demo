@@ -19,7 +19,6 @@ namespace MayLily.Services
         {
             container.RegisterAutoWiredAs<Configuration, IConfiguration>().ReusedWithin(ReuseScope.Container);
             container.RegisterAutoWiredAs<MayLilyMetadataSource, IMetadataSource>().ReusedWithin(ReuseScope.Container);
-            container.RegisterAutoWiredAs<MayLilyMetadataSource, IMetadataSource>().ReusedWithin(ReuseScope.Container);
             container.RegisterAutoWiredAs<MayLilyContext, IDbMigrator>().ReusedWithin(ReuseScope.None);
             container.RegisterAutoWiredAs<MayLilyContext, IMayLilyContext>().ReusedWithin(ReuseScope.None);
         }
