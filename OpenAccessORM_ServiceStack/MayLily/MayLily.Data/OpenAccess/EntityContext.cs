@@ -56,7 +56,7 @@ namespace MayLily.Data.OpenAccess
 
             if (string.IsNullOrEmpty(script) == false)
             {
-                handler.ExecuteDDLScript(script);
+                handler.ForceExecuteDDLScript(script);
             }
         }
 
