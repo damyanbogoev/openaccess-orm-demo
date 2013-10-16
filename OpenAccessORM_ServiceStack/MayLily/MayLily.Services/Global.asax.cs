@@ -17,6 +17,7 @@ namespace MayLily.Services
 
         public override void Configure(Container container)
         {
+            // Registering the dependencies that will be used during the application lifetime and by the service itself.
             container.RegisterAutoWiredAs<Configuration, IConfiguration>().ReusedWithin(ReuseScope.Container);
             container.RegisterAutoWiredAs<MayLilyMetadataSource, IMetadataSource>().ReusedWithin(ReuseScope.Container);
             container.RegisterAutoWiredAs<MayLilyContext, IDbMigrator>().ReusedWithin(ReuseScope.None);
@@ -31,6 +32,7 @@ namespace MayLily.Services
             MayLilyAppHost appHost = new MayLilyAppHost();
             appHost.Init();
 
+            // Migrate the database schema and seed it with sample data.
             IDbMigrator migrator = appHost.Container.Resolve<IDbMigrator>();
             migrator.MigrateSchema();
             migrator.SeedData();
